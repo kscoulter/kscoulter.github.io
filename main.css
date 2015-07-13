@@ -1,0 +1,31 @@
+body {
+  background-color: #ccc;
+}
+
+table{
+  position: relative;
+  margin: auto;
+}
+
+td {
+  width: 200px;
+  height: 350px;
+  background-color: black;
+  margin: 10px;
+}
+
+td.reveal{
+  background-image:url("http://pre11.deviantart.net/a279/th/pre/i/2015/001/f/5/lock_01_by_hopelessbeliever-d8c6uxm.jpg");
+}
+
+td.moon{
+  background-image: url("http://images.clipartpanda.com/moon-clip-art-yTkaob8TE.png");
+}
+
+td.star{
+  background-image: url("http://www.catawbaschools.net/schools/Catawba/staff/Jacalyn_McGill/FieldTrip/_w/star-clipart_gif.jpg");
+}
+
+td.square{
+  background-image: url("http://classroomclipart.com/images/gallery/Clipart/Mathematics/TN_square_cartoon.jpg");
+}
