@@ -34,19 +34,18 @@ function getTwoCards(){
   if(numClicks <= 2){
     classClicked = $(event.target).attr("class")
     compareArray.push(classClicked);
-    console.log(compareArray);
     setImage()
   }
 };
 
 function cardsMatch(array){
-  if(array[0] == array[1]){
+  console.log(array);
+  var match = false;
+  if(array[0] === array[1]){
     console.log("It's a match!");
-    return true
+    match = true;
   }
-  else{
-    return false
-  }
+    return match;
 }
 
 // function setSleve(){
@@ -76,12 +75,12 @@ for(var i = 0; i < cardArray.length; i++){
 }
 
 //attach a click event to cards that will reveal it's bakcground image
-$("table").on("click", function(){
+$("td").on("click", function(){
   numClicks++
   getTwoCards()
   if(numClicks == 2){
-    console.log(cardsMatch(compareArray));
-    if(!cardsMatch(compareArray)){
+
+    if(cardsMatch(compareArray) === false){ //cards don't match
       //need to use compare array to target class
       console.log("nope");
       //need delay here
@@ -91,7 +90,10 @@ $("table").on("click", function(){
         compareArray = [];
       },700)
     }
-    else{
+    else if(cardsMatch(compareArray) === true){ //cards match
+      console.log(compareArray);
+      $("." + compareArray[0]).off()
+
       compareArray = [];
       //remove event listener
     }
