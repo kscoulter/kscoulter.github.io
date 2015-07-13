@@ -35,3 +35,8 @@ for(var i = 0; i < cardArray.length; i++){
 }
 
 //attach a click event to cards that will reveal it's bakcground image
+$("table").on("click", function(){
+  //I clicked on a td, what is it's class?
+  classClicked = $(event.target).attr("class")
+  //$(event.target).css("background-image", )
+})
