@@ -44,7 +44,16 @@ function cardsMatch(array){
     console.log("It's a match!");
     return true
   }
+  else{
+    return false
+  }
 }
+
+// function setSleve(){
+//   $("." + compareArray[0]).css("background-image", sleeve)
+//   $("." + compareArray[1]).css("background-image", sleeve)
+//   compareArray = [];
+// }
 
 var cardNameArray = Object.keys(cards);
 var cardArray = [];
@@ -71,15 +80,25 @@ $("table").on("click", function(){
   numClicks++
   getTwoCards()
   if(numClicks == 2){
+    console.log(cardsMatch(compareArray));
     if(!cardsMatch(compareArray)){
       //need to use compare array to target class
-      alert("nope")
-      //delay
-      $("." + compareArray[0]).css("background-image", sleeve)
-      $("." + compareArray[1]).css("background-image", sleeve)
+      console.log("nope");
+      //need delay here
+      var timeout = setTimeout(function(){
+        $("." + compareArray[0]).css("background-image", sleeve)
+        $("." + compareArray[1]).css("background-image", sleeve)
+        compareArray = [];
+      },700)
     }
+    else{
+      compareArray = [];
+      //remove event listener
+    }
+    numClicks = 0;
   }
 })
+
 
 
 
