@@ -1,9 +1,3 @@
-var array = ["square", "star", "moon"];
-
-for(var i = 0; i < array.length; i++){
-  $("tr").append("<td class =" + array[i] + "></td>")
-}
-
 var cards = {
   cardA: {
     image: 'url("/Users/kcoulter/Documents/RicolettaCemeteryLocks/IMG_0199")',
@@ -29,9 +23,15 @@ function Shuffle(o) {
 var cardNameArray = Object.keys(cards);
 var cardArray = [];
 
-for(var i = 0; i < cardNameArray.length; i++){
+for(var i = 0; i < cardNameArray.length; i++){ //creates an array of objects
   cardArray.push(cards[cardNameArray[i]]) //how to access the card objects
-  cardArray.push(cards[cardNameArray[i]])
+  cardArray.push(cards[cardNameArray[i]]) //creates a double for every card
 }
 
 Shuffle(cardArray);
+///I need to access class cards.cardA.class
+for(var i = 0; i < cardArray.length; i++){
+  $("tr").append("<td class =" + cardArray[i].class + "></td>")
+}
+
+//attach a click event to cards that will reveal it's bakcground image
