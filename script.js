@@ -21,13 +21,17 @@ var cards = {
     matched: false
   }
 }
+function Shuffle(o) {
+	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	return o;
+};
 
 var cardNameArray = Object.keys(cards);
 var cardArray = [];
 
 for(var i = 0; i < cardNameArray.length; i++){
-  // console.log(cardNameArray);
-  // console.log(cardNameArray[i]);
-  // console.log(cards[cardNameArray[i]]);
   cardArray.push(cards[cardNameArray[i]]) //how to access the card objects
+  cardArray.push(cards[cardNameArray[i]])
 }
+
+Shuffle(cardArray);
