@@ -17,6 +17,7 @@ var cards = [
   new card("http://hqmaniacs.uol.com.br/img/noticia/korra_11032011.jpg","korra")
 ]
 
+///////////////////Memory Game////////////////
 var game = function(){
 
   function Shuffle(o) {
