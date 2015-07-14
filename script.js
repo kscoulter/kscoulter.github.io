@@ -6,7 +6,10 @@ var card = function(image, clas){
 var cards = [
   new card("images/IMG_0199.jpg", "rustyLock"),
   new card("http://regencypharmacy.com/images/puppy.png","puppy"),
-  new card("images/IMG_0223.jpg","rustyGreen")
+  new card("images/IMG_0223.jpg","rustyGreen"),
+  new card("http://www.pet-insurance-policy.com/images/kitten.jpg", "whiteKitty"),
+  new card("http://orig02.deviantart.net/2bf2/f/2015/070/1/1/wolf_and_cat_by_jesibellwinterwolf-d8lb3c7.jpg", "wolfCat"),
+  new card("https://s-media-cache-ak0.pinimg.com/236x/15/26/6f/15266f9abbe49aa19633286bbc7b61f1.jpg", "baby")
 ]
 
 
@@ -60,11 +63,11 @@ Shuffle(cardArray);
 ///I need to access class cards.cardA.class
 //Append to body
 for(var i = 0; i < cardArray.length; i++){
-  $("tr").append("<td class =" + cardArray[i].class + "></td>")
+  $(".table").append("<div class =" + cardArray[i].class + "></div>")
 }
 
 //attach a click event to cards that will reveal it's bakcground image
-$("td").on("click", function(){
+$("div").on("click", function(){
   numClicks++
   getTwoCards()
   if(numClicks == 2){
@@ -77,7 +80,7 @@ $("td").on("click", function(){
         $("." + compareArray[0]).css("background-image", sleeve)
         $("." + compareArray[1]).css("background-image", sleeve)
         compareArray = [];
-      },700)
+      },500)
     }
     else if(cardsMatch(compareArray) === true){ //cards match
       console.log(compareArray);

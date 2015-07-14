@@ -1,19 +1,26 @@
 body {
   background-color: #ccc;
+  margin-top: 50px;
 }
 
-table{
+/*div {
   position: relative;
   margin: auto;
-}
-
-td {
-  width: 200px;
-  height: 350px;
-  background-image: url('https://pbs.twimg.com/profile_images/588424740223627264/oshWYgF9.jpg');
-  margin: 10px;
-}
-
-/*td.reveal{
-  background-image:
 }*/
+.table {
+  display: table;
+  margin: auto;
+  table-layout: fixed;
+  width: 1212px;
+}
+
+div {
+  background-image: url('https://pbs.twimg.com/profile_images/588424740223627264/oshWYgF9.jpg');
+  background-repeat: round;
+  display: table-cell;
+  float: left;
+  height: 350px;
+  margin: 1px;
+  overflow: hidden;
+  width: 200px;
+}
