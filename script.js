@@ -1,20 +1,14 @@
-var cards = {
-  cardA: {
-    image: "images/IMG_0199.jpg",
-    class:"rustyLock",
-    matched: false
-  },
-  cardB: {
-    image: "http://regencypharmacy.com/images/puppy.png",
-    class: "puppy",
-    matched: false
-  },
-  cardC: {
-    image: "images/IMG_0223.jpg",
-    class: "rustyGreen",
-    matched: false
-  }
+var card = function(image, clas){
+  this.image = image;
+  this.class = clas;
 }
+
+var cards = [
+  new card("images/IMG_0199.jpg", "rustyLock"),
+  new card("http://regencypharmacy.com/images/puppy.png","puppy"),
+  new card("images/IMG_0223.jpg","rustyGreen")
+]
+
 
 function Shuffle(o) {
 	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -48,13 +42,8 @@ function cardsMatch(array){
     return match;
 }
 
-// function setSleve(){
-//   $("." + compareArray[0]).css("background-image", sleeve)
-//   $("." + compareArray[1]).css("background-image", sleeve)
-//   compareArray = [];
-// }
-
 var cardNameArray = Object.keys(cards);
+console.log("cardNameArray is " + cardNameArray);
 var cardArray = [];
 var classClicked;
 var numClicks = 0;
