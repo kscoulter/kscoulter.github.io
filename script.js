@@ -6,15 +6,15 @@ var card = function(image, clas){
 }
 //////////////////////setting the card images/////////////////////
 var cards = [
-  new card("images/IMG_0199.jpg", "rustyLock"),
-  new card("http://regencypharmacy.com/images/puppy.png","puppy"),
-  new card("images/IMG_0223.jpg","rustyGreen"),
-  new card("http://www.pet-insurance-policy.com/images/kitten.jpg", "whiteKitty"),
-  new card("http://orig02.deviantart.net/2bf2/f/2015/070/1/1/wolf_and_cat_by_jesibellwinterwolf-d8lb3c7.jpg", "wolfCat"),
-  new card("https://s-media-cache-ak0.pinimg.com/236x/15/26/6f/15266f9abbe49aa19633286bbc7b61f1.jpg", "baby"),
-  new card("http://www.ilikewallpaper.net/iphone-4s-wallpapers/download/3654/Planet-Earth-iphone-4s-wallpaper-ilikewallpaper_com_200.jpg","dryPlanet"),
-  new card("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRRoHs-u1o14zH3WEMAryqaR8jyJbC08qmAW05ckwU_3Z8FP-cs","jupiter"),
-  new card("http://hqmaniacs.uol.com.br/img/noticia/korra_11032011.jpg","korra")
+  new card("images/earth.jpg", "earth"),
+  new card("images/Jupiter.jpg","jupiter"),
+  new card("images/planet.jpg","planet"),
+  new card("images/rings.jpg", "rings"),
+  new card("images/saturn.jpg", "saturn"),
+  new card("images/sun.jpg", "sun"),
+  new card("images/venus.jpg","venus"),
+  new card("images/alien.png","alien"),
+  new card("images/purpleplanet.jpg","purplep")
 ]
 
 ///////////////////Memory Game////////////////
