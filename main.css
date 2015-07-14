@@ -1,17 +1,33 @@
 body {
-  background-color: #ccc;
-  margin-top: 50px;
+  background-image: url("http://orig09.deviantart.net/4d5e/f/2007/322/3/e/texture_20_by_insan_stock.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 50px 0 100px 0;
+}
+h1{
+  color: rgba(0,0,0,.65);
+  text-align: center;
+  margin: 50px 0 20px 0;
+  font-size: 60px;
 }
 
-/*div {
-  position: relative;
-  margin: auto;
-}*/
+h1:hover{
+  color: rgba(0,0,0,.75);
+  font-size: 61px;
+}
+
+p{
+  text-align: center;
+  font-size: 26px;
+}
+
 .table {
   display: table;
   margin: auto;
   table-layout: fixed;
-  width: 1212px;
+  width: 1152px;
 }
 
 div {
@@ -19,8 +35,23 @@ div {
   background-repeat: round;
   display: table-cell;
   float: left;
-  height: 350px;
+  height: 270px;
   margin: 1px;
   overflow: hidden;
-  width: 200px;
+  width: 190px;
+}
+
+button{
+  border-radius: 10px;
+  background-color: rgba(52, 25, 40, 0.4);
+  display: block;
+  font-size: 27px;
+  margin: 35px auto;
+  padding: 10px;
+  width: 192px;
+}
+
+button:hover{
+  background-color: rgba(52, 25, 40, 0.8);
+  color: white;
 }
