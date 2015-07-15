@@ -106,7 +106,16 @@ var game = function(){
 
 game()
 
+////buttons////
 $(".reset").on("click",function(){
   $(".table").empty()
   game()
 })
+
+$("h1").on("click", function(){
+  $("h2").toggle("class")
+})
+
+// $(".heart").on("mouseover", function(){
+//   $("nav").show()
+// })
