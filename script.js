@@ -75,6 +75,10 @@ var game = function(){
     //attach a click event to cards that will reveal it's bakcground image
     $("div").on("click", function(){
       numClicks++
+      if($(event.target).attr("class") == "alien"){
+        var audio = new Audio('sound/alien.m4a');
+        audio.play();
+      }
       getTwoCards()
       if(numClicks == 2){
 
