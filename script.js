@@ -19,13 +19,13 @@ var cards = [
 
 ///////////////////Memory Game////////////////
 var game = function(){
-
+  //Shuffles an object and returns that object
   function Shuffle(o) {
   	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
   	return o;
   };
-
-  function setImage(){
+  //Displays the corresponding image for the div that was clicked using its class
+  function setImage(event){
     for(var i = 0; i < cardArray.length; i++){
       if(cardArray[i].class == classClicked){
         //return cardArray[i].image;
@@ -33,15 +33,15 @@ var game = function(){
       }
     }
   };
-
-  function getTwoCards(){
+  //Gets two cards that were clicked in an array so they can be compared
+  function getTwoCards(event){
     if(numClicks <= 2){
       classClicked = $(event.target).attr("class")
       compareArray.push(classClicked);
-      setImage()
+      setImage(event)
     }
   };
-
+  //Checks for a match using the class names of clicked divs
   function cardsMatch(array){
     console.log(array);
     var match = false;
@@ -51,57 +51,57 @@ var game = function(){
     }
       return match;
   }
+    //setting up variables
+  var cardNameArray = Object.keys(cards);
+  var numClicks = 0;
+  var cardArray = [];
+  var classClicked;
+  var compareArray = [];
+  var sleeve = "url('https://pbs.twimg.com/profile_images/588424740223627264/oshWYgF9.jpg')"
 
-    var cardNameArray = Object.keys(cards);
-    var numClicks = 0;
-    var cardArray = [];
-    var classClicked;
-    var compareArray = [];
-    var sleeve = "url('https://pbs.twimg.com/profile_images/588424740223627264/oshWYgF9.jpg')"
+  //populate card Array
+  for(var i = 0; i < cardNameArray.length; i++){ //creates an array of objects
+    cardArray.push(cards[cardNameArray[i]]) //how to access the card objects
+    cardArray.push(cards[cardNameArray[i]]) //creates a double for every card
+  }
 
-    //populate card Array
-    for(var i = 0; i < cardNameArray.length; i++){ //creates an array of objects
-      cardArray.push(cards[cardNameArray[i]]) //how to access the card objects
-      cardArray.push(cards[cardNameArray[i]]) //creates a double for every card
+  Shuffle(cardArray);
+  ///I need to access class cards.cardA.class
+  //Append my cards to the game board
+  for(var i = 0; i < cardArray.length; i++){
+    $(".table").append("<div class =" + cardArray[i].class + "></div>")
+  }
+
+  //attach a click event to cards that will reveal it's bakcground image
+  $("div").on("click", function(event){
+    numClicks++
+    //Easter Egg: plays an Alien sound when the alien card is clicked
+    if($(event.target).attr("class") == "alien"){
+      var audio = new Audio('sound/alien.m4a');
+      audio.play();
     }
-
-    Shuffle(cardArray);
-    ///I need to access class cards.cardA.class
-    //Append to body
-    for(var i = 0; i < cardArray.length; i++){
-      $(".table").append("<div class =" + cardArray[i].class + "></div>")
-    }
-
-    //attach a click event to cards that will reveal it's bakcground image
-    $("div").on("click", function(){
-      numClicks++
-      if($(event.target).attr("class") == "alien"){
-        var audio = new Audio('sound/alien.m4a');
-        audio.play();
-      }
-      getTwoCards()
-      if(numClicks == 2){
-
-        if(cardsMatch(compareArray) === false){ //cards don't match
-          //need to use compare array to target class
-          console.log("nope");
-          //need delay here
-          var timeout = setTimeout(function(){
-            $("." + compareArray[0]).css("background-image", sleeve)
-            $("." + compareArray[1]).css("background-image", sleeve)
-            compareArray = [];
-          },500)
-        }
-        else if(cardsMatch(compareArray) === true){ //cards match
-          console.log(compareArray);
-          $("." + compareArray[0]).off()
-
+    getTwoCards(event)
+    if(numClicks == 2){ //this forbids clicking on more than 2 cards at a time
+      if(cardsMatch(compareArray) === false){ //cards don't match
+        //need to use compare array to target class
+        console.log("nope");
+        //resets flipped cards to it's sleeve image after a 5ms delay
+        var timeout = setTimeout(function(){
+          $("." + compareArray[0]).css("background-image", sleeve)
+          $("." + compareArray[1]).css("background-image", sleeve)
           compareArray = [];
-          //remove event listener
-        }
-        numClicks = 0;
+        },500)
       }
-    })
+      else if(cardsMatch(compareArray) === true){ //cards match
+        //removes event listener from matched cards
+        $("." + compareArray[0]).off()
+        //resets the compare array so it can be used again
+        compareArray = [];
+      }
+      //resets the number of clicks so unmatched cards can be flipped over
+      numClicks = 0;
+    }
+  })
 }
 
 game()
