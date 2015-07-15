@@ -116,6 +116,10 @@ $("h1").on("click", function(){
   $("h2").toggle("class")
 })
 
-// $(".heart").on("mouseover", function(){
-//   $("nav").show()
-// })
+$(".heart").on("mouseover", function(){
+  $("nav").html("<ul><li>Coming Soon!</li></ul>")
+  $("nav").show()
+  var delay = setTimeout(function(){
+    $("nav").hide()
+  },1500)
+})
