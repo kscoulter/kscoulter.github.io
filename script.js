@@ -36,20 +36,23 @@ var game = function(){
   //Gets two cards that were clicked in an array so they can be compared
   function getTwoCards(event){
     if(numClicks <= 2){
-      classClicked = $(event.target).attr("class")
-      compareArray.push(classClicked);
+      compareArray.push(event.target);
       setImage(event)
     }
   };
   //Checks for a match using the class names of clicked divs
   function cardsMatch(array){
-    console.log(array);
     var match = false;
-    if(array[0] === array[1]){
-      console.log("It's a match!");
-      match = true;
+    if(array.length == 2){
+      if(array[0] != array[1]){
+        console.log("I'm here");
+        if(array[0].className === array[1].className){
+          console.log("It's a match!");
+          match = true;
+        }
+      }
     }
-      return match;
+    return match;
   }
     //setting up variables
   var cardNameArray = Object.keys(cards);
@@ -75,8 +78,9 @@ var game = function(){
   //attach a click event to cards that will reveal it's bakcground image
   $("div").on("click", function(event){
     numClicks++
+    classClicked = event.target.className
     //Easter Egg: plays an Alien sound when the alien card is clicked
-    if($(event.target).attr("class") == "alien"){
+    if(classClicked == "alien"){
       var audio = new Audio('sound/alien.m4a');
       audio.play();
     }
@@ -87,19 +91,23 @@ var game = function(){
         console.log("nope");
         //resets flipped cards to it's sleeve image after a 5ms delay
         var timeout = setTimeout(function(){
-          $("." + compareArray[0]).css("background-image", sleeve)
-          $("." + compareArray[1]).css("background-image", sleeve)
+          $("." + compareArray[0].className).css("background-image", sleeve)
+          $("." + compareArray[1].className).css("background-image", sleeve)
           compareArray = [];
+          bullshit = [];
         },500)
       }
       else if(cardsMatch(compareArray) === true){ //cards match
         //removes event listener from matched cards
-        $("." + compareArray[0]).off()
+        $("." + compareArray[0].className).off()
         //resets the compare array so it can be used again
         compareArray = [];
       }
       //resets the number of clicks so unmatched cards can be flipped over
       numClicks = 0;
+    }
+    else if(numClicks > 2){
+      $("." + classClicked).css("background-image", sleeve)
     }
   })
 }
